@@ -11,8 +11,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      type: {
+      tractorType: {
         type: Sequelize.ENUM(tractors.types),
+        defaultValue: 'Utility',
         allowNull: false,
       },
       brand: {
@@ -22,6 +23,13 @@ module.exports = {
       model: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      horsepower: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          min: 0,
+        },
       },
       reaction: {
         type: Sequelize.STRING,

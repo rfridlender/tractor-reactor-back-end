@@ -13,13 +13,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Post.belongsTo(models.Profile, { foreignKey: 'id' })
+      Post.belongsTo(models.Profile, { foreignKey: 'authorId' })
       Post.hasMany(models.Rating, { as: 'ratings', foreignKey: 'raterId' })
     }
   }
   Post.init({
-    type: {
+    tractorType: {
       type: DataTypes.ENUM(tractors.types),
+      defaultValue: 'Utility',
       allowNull: false,
     },
     brand: {
@@ -29,6 +30,13 @@ module.exports = (sequelize, DataTypes) => {
     model: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    horsepower: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: {
+        min: 0,
+      },
     },
     reaction: {
       type: DataTypes.STRING,

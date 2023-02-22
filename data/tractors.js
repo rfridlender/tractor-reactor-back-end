@@ -1,14 +1,14 @@
 const tractors = {
   types: [
-    'Industrial Tractors',
-    'Row Crop Tractors',
-    'Orchard Tractors',
-    'Compact Tractors',
-    'Sub-Compact Tractors',
-    'Utility Tractors',
-    'Garden Tractors',
-    'Specialty Tractors',
-    'Earthmoving Tractors'
+    'Industrial',
+    'Row Crop',
+    'Orchard',
+    'Compact',
+    'Sub-Compact',
+    'Utility',
+    'Garden',
+    'Specialty',
+    'Earthmoving'
   ],
   brands: [
     'John Deere',
