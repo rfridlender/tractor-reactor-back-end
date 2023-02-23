@@ -34,6 +34,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      rating: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          min: 1,
+          max: 5,
+        },
+      },
       authorId: {
         type: Sequelize.INTEGER,
         allowNull: false,

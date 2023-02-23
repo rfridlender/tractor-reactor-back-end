@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Rating extends Model {
+  class Comment extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,29 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Rating.belongsTo(models.Post, { foreignKey: 'postId' })
-      Rating.belongsTo(models.Profile, { foreignKey: 'raterId' })
+      Comment.belongsTo(models.Post, { foreignKey: 'authorId' })
     }
   }
-  Rating.init({
-    postId: {
-      type: DataTypes.INTEGER,
+  Comment.init({
+    content: {
+      type: DataTypes.STRING,
       allowNull: false,
-      onDelete: 'CASCADE',
-      references: {
-        model: 'Posts',
-        key: 'ratings',
-      },
     },
-    value: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        min: 1,
-        max: 5,
-      },
-    },
-    raterId: {
+    authorId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       onDelete: 'CASCADE',
@@ -44,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {
     sequelize,
-    modelName: 'Rating',
+    modelName: 'Comment',
   });
-  return Rating;
+  return Comment;
 };

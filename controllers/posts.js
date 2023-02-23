@@ -1,9 +1,13 @@
-const { Post, Profile } = require('../models')
+const { Post, Comment, Profile } = require('../models')
 const cloudinary = require('cloudinary').v2
 
 async function index(req, res) {
   try {
-    const posts = await Post.findAll({ include: { model: Profile, as: 'author' } })
+    const posts = await Post.findAll({
+      include: [
+        { model: Comment, as: 'comments' },
+        { model: Profile, as: 'author' },
+      ]})
     res.status(200).json(posts)
   } catch (error) {
     console.log(error)
