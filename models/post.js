@@ -13,21 +13,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Post.belongsTo(models.Profile, { foreignKey: 'authorId' })
+      Post.belongsTo(models.Profile, { as: 'author', foreignKey: 'authorId' })
       Post.hasMany(models.Rating, { as: 'ratings', foreignKey: 'raterId' })
     }
   }
   Post.init({
-    tractorType: {
+    variety: {
       type: DataTypes.ENUM(tractors.types),
-      defaultValue: 'Utility',
       allowNull: false,
     },
     brand: {
       type: DataTypes.ENUM(tractors.brands),
       allowNull: false,
     },
-    model: {
+    design: {
       type: DataTypes.STRING,
       allowNull: false,
     },

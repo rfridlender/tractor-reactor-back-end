@@ -11,16 +11,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      tractorType: {
+      variety: {
         type: Sequelize.ENUM(tractors.types),
-        defaultValue: 'Utility',
         allowNull: false,
       },
       brand: {
         type: Sequelize.ENUM(tractors.brands),
         allowNull: false,
       },
-      model: {
+      design: {
         type: Sequelize.STRING,
         allowNull: false,
       },
