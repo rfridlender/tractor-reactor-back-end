@@ -15,4 +15,8 @@ router.put('/:id', checkAuth, postsCtrl.update)
 router.delete('/:id', checkAuth, postsCtrl.delete)
 router.put('/:id/add-photo', checkAuth, postsCtrl.addPhoto)
 
+router.post('/:id/comments', checkAuth, postsCtrl.addComment)
+router.put('/:id/comments/:commentId', checkAuth, postsCtrl.updateComment)
+router.delete('/:id/comments/:commentId', checkAuth, postsCtrl.deleteComment)
+
 module.exports = router
