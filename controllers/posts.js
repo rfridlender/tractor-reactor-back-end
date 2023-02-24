@@ -4,10 +4,11 @@ const cloudinary = require('cloudinary').v2
 async function index(req, res) {
   try {
     const posts = await Post.findAll({
+      order: [['createdAt', 'DESC'], ['comments', 'createdAt', 'ASC']],
       include: [
-        { model: Comment, as: 'comments', include: {
-            model: Profile, as: 'author', attributes: ['name', 'photo']
-        }},
+        { model: Comment,
+          as: 'comments',
+          include: { model: Profile, as: 'author', attributes: ['name', 'photo']}},
         { model: Profile, as: 'author', attributes: ['name', 'photo']},
       ]})
     res.status(200).json(posts)
