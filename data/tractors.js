@@ -1,11 +1,11 @@
 const tractors = {
   types: [
+    'Utility',
     'Industrial',
     'Row Crop',
     'Orchard',
     'Compact',
     'Sub-Compact',
-    'Utility',
     'Garden',
     'Specialty',
     'Earthmoving'
