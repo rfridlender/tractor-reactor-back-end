@@ -11,6 +11,17 @@ async function index(req, res) {
   }
 }
 
+async function show(req, res) {
+  try {
+    const profile = await Profile.findOne({ where: { id: req.params.id } })
+    console.log(profile)
+    res.json(profile)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ err: error })
+  }
+}
+
 async function addPhoto(req, res) {
   try {
     const imageFile = req.files.photo.path
@@ -28,4 +39,4 @@ async function addPhoto(req, res) {
   }
 }
 
-module.exports = { index, addPhoto }
+module.exports = { index, show, addPhoto }
