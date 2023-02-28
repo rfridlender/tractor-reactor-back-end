@@ -6,9 +6,11 @@ async function index(req, res) {
     const posts = await Post.findAll({
       order: [['createdAt', 'DESC'], ['comments', 'createdAt', 'ASC']],
       include: [
-        { model: Comment,
+        {
+          model: Comment,
           as: 'comments',
-          include: { model: Profile, as: 'author', attributes: ['name', 'photo']}},
+          include: { model: Profile, as: 'author', attributes: ['name', 'photo']}
+        },
         { model: Profile, as: 'author', attributes: ['name', 'photo']},
       ]})
     res.status(200).json(posts)

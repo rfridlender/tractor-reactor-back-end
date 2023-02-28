@@ -15,6 +15,13 @@ module.exports = {
         type: Sequelize.ENUM(tractors.types),
         allowNull: false,
       },
+      year: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        validate: {
+          min: 0,
+        },
+      },
       brand: {
         type: Sequelize.ENUM(tractors.brands),
         allowNull: false,
